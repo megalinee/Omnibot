@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/Quif/Omnibot/issues"
   },
-  "homepage": "https://github.com/Quif/Omnibot#readme"
+  "homepage": "https://github.com/Quif/Omnibot#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "performance-now": "^2.0.0"
+  }
 }
