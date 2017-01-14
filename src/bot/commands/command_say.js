@@ -7,7 +7,7 @@
 const command = {
 
 	name: 'say',
-	description: 'A simple command that will echo what you say',
+	description: 'A command that will echo what you say',
 	arguments: ['text'],
 	requirement: 'none',
 	process: (bot , message , config) => {
