@@ -17,7 +17,7 @@ const events = require('./events/events.js');
 
 /*
 
-	MOD EVENTS 
+	MOD EVENTS
 
 */
 
