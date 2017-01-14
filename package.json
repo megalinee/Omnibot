@@ -1,28 +1,28 @@
 {
-  "name": "omnibot",
-  "version": "1.0.0",
-  "description": "An all in one Discord Bot",
-  "main": "src/bot/main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Quif/Omnibot.git"
-  },
-  "keywords": [
-    "discord",
-    "bot",
-    "moderation"
-  ],
-  "author": "Yoshi, Megaline, Joosh",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Quif/Omnibot/issues"
-  },
-  "homepage": "https://github.com/Quif/Omnibot#readme",
-  "dependencies": {
-    "colors": "^1.1.2",
-    "performance-now": "^2.0.0"
-  }
+    "name": "omnibot",
+    "version": "1.0.0",
+    "description": "An all in one Discord Bot",
+    "main": "src/bot/main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Quif/Omnibot.git"
+    },
+    "keywords": [
+        "discord",
+        "bot",
+        "moderation"
+    ],
+    "author": "Yoshi, Megaline, Joosh",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Quif/Omnibot/issues"
+    },
+    "homepage": "https://github.com/Quif/Omnibot#readme",
+    "dependencies": {
+        "colors": "^1.1.2",
+        "performance-now": "^2.0.0"
+    }
 }

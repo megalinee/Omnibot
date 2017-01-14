@@ -10,3 +10,5 @@ var commands = {
 	say: require('./command_say.js')
 
 }
+
+module.exports = command;

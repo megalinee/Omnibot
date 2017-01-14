@@ -11,11 +11,14 @@ const command = {
 	arguments: ['text'],
 	requirement: 'none',
 	process: (bot , message , config) => {
-				message.channel.sendEmbed({
-					color: 0x656a7d,
-					title: message.content
-				});
-			});
+		
+		message.channel.sendEmbed({
+
+			color: 0x656a7d,
+			title: message.content
+			
+		});
+	};
 
 	}
 

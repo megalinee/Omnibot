@@ -56,6 +56,14 @@ bot.on('message', message => {
 
 	*/
 
+	if(message.content.startsWith(config.defaultPrefix)) {
+
+		let input = message.content.toLowerCase();
+		let cmdText = input.split(' ')[0].
+		
+
+	}
+
 })
 
 /*
