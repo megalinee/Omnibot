@@ -12,6 +12,23 @@ const colour = require('colors') // COLOURED CONSOLE IS 🔥
 
 const devConfig = JSON.parse(fs.readFileSync('../../../omnibot_config.json')); // CONFIG FOR PRIVATE STUFF
 
+const commands = require('./commands/commands.js');
+const events = require('./events/events.js');
+
+/*
+
+	MOD EVENTS 
+
+*/
+
+bot.on('presenceUpdate', events.presenceUpdate);
+
+/*
+
+	COMMAND HANDLER
+
+*/
+
 /*
 	BOT LOGIN
 */
