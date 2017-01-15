@@ -4,7 +4,7 @@
 
 */
 
-const Discord = require('discord.js'); // IMPORT DISCORD
+const Discord = require('discord.js'); // IMPORoT DISCORD
 const bot = new Discord.Client(); // BOT OBJECT
 
 const fs = require('fs'); // IMPORT FS
