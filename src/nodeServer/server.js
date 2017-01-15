@@ -7,7 +7,8 @@ const app = express();
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
-function getInfo(token){
+function getInfo(token) {
+  
   return new Promise(function(resolve, reject){
     let result;
     request

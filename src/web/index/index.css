@@ -1,0 +1,57 @@
+/*
+	BODY	
+*/
+
+body {
+
+	background-color: #1e1e1e;
+	-webkit-font-smoothing: antialiased;
+
+}
+
+/*
+	NAV BAR
+*/
+
+#navOpen {
+
+	position: fixed;
+	top: 30px;
+	left: 20px;
+	overflow: hidden;
+	outline: none;
+
+	background: none;
+	border: none;
+
+}
+
+#navOpen img {
+
+	width: 20px;
+
+}
+
+#navItems {
+
+	position: fixed;
+	top: 10px;
+	right: 20px;
+
+}
+
+#navItems li {
+
+	display: inline;
+	color: white;
+	font-family: 'Roboto';
+	margin: 10px;
+	font-size: 20px;
+
+}
+
+/*
+
+	CENTER
+
+*/
