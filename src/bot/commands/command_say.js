@@ -18,8 +18,6 @@ const command = {
 			title: message.content
 			
 		});
-	};
-
 	}
 
 }

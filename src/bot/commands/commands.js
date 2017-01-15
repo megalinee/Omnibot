@@ -8,8 +8,8 @@ var commands = {
 
 	ping: require('./command_ping.js'),
 	say: require('./command_say.js'),
-	settings: require('./command_setPrefix.js')
+	prefix: require('./command_prefix.js')
 
 }
 
-module.exports = command;
+module.exports = commands;

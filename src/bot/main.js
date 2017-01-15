@@ -24,6 +24,7 @@ const events = require('./events/events.js');
 */
 
 bot.on('guildMemberAdd', events.guildMemberAdd);
+bot.on('guildCreate', events.guildCreate);
 
 /*
 
@@ -36,6 +37,7 @@ bot.on('ready', () => {
 	bot.user.setGame(config.game, 'http://twitch.tv/notStreaming');
 
 	console.log(`BOT IS ${'ONLINE'.green}`);
+	
 	console.log(`| Logged in on account ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`.green);
 
 	console.log(`\n| Performing on ${`${bot.guilds.size}`.yellow} guilds and ${`${bot.users.size}`.yellow} people`)
@@ -59,7 +61,14 @@ bot.on('message', message => {
 	if(message.content.startsWith(config.defaultPrefix)) {
 
 		let input = message.content.toLowerCase();
-		let cmdText = input.split(' ')[0].
+		let cmdText = input.split(' ')[0].substring(0);
+
+		if(commands.indexOf(cmdText) !== -1) {
+
+
+			console.log('hi')
+
+		} 
 		
 
 	}
