@@ -1,9 +1,3 @@
-/*
-
-    USER INFO COMMAND
-
-*/
-
 const command = {
 
 	name: 'userinfo',
@@ -12,47 +6,28 @@ const command = {
 	requirement: 'none',
 	process: (bot , message , config) => {
 
-        var author;
-    
-        if(!message.mentions.users.first()) author = message.author;
-    
-        if(message.mentions.users.first()) author = message.mentions.users.first();
-    
-        const embed = {
+  var author;
+  
+  if(!message.mentions.users.first()) author = message.author
+  
+  if(message.mentions.users.first()) author = message.mentions.users.first()
+  
+  const embed = new Discord.RichEmbed()
+  .setTitle('Info about ' + author.username)
+  .setAuthor(author.username, author.avatarURL)
+  .setColor(0x00AE86)
+  .setFooter('Omni Bot | ' + new Date, bot.user.avatarURL)
+  .setThumbnail(author.avatarURL)
+  .setURL('http://quif.github.io/omnibot')
+  .addField('Date account made', author.createdAt)
+  .addField('Author ID', author.id, true)
 
-            author: {
-                name: author.username,
-                icon_url: author.avatarURL
-            },
-            color: 0x00AE86,
-            footer: {
-                text: 'Omni Bot | ' + new Date(),
-                icon_url: bot.user.avatarURL
-            },
-            title: 'Info about ' + author.username,
-            thumbnail: {
-                url: author.avatarURL
-            },
-            fields: [
-                {
-                    name: 'Date account made',
-                    value: author.createdAt,
-                    inline: true
-                },
-                {
-                    name: 'Author ID',
-                    value: author.id,
-                    inline: true
-                }
-            ],
-            url: 'http://quif.github.io/omnibot'
+  msg.channel.sendEmbed(
+  embed,
+  '',
+  { disableEveryone: true }
+  );
 
-        }
-
-        message.channel.sendEmbed(embed);
-
-    }
+	}
 
 }
-
-module.exports = command;
