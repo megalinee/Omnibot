@@ -61,14 +61,26 @@ bot.on('message', message => {
 	if(message.content.startsWith(config.defaultPrefix)) {
 
 		let input = message.content.toLowerCase();
-		let cmdText = input.split(' ')[0].substring(0);
+		let cmdText = input.split(' ')[0].substring(1);
 
-		if(commands.indexOf(cmdText) !== -1) {
+		if(commands[cmdText]) {
 
 
-			console.log('hi')
+			// COMMAND HAS BEEN TRIGGERED
 
-		} 
+			console.log(`| COMMAND ${cmdText} WAS TRIGGERED BY ${message.author.username}#${message.author.discriminator}`.yellow);
+
+			try {
+
+				commands[cmdText].process(bot, message, config);
+
+			} catch(error) {
+
+				console.log(`| COMMAND ${cmdText} FAILED : ${error}`.red)
+
+			}
+
+		}
 		
 
 	}

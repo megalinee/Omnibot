@@ -10,14 +10,14 @@ const command = {
 	requirement: 'none',
 	process: (bot , message , config) => {
   
-  var servers = require('./servers.json')
-		
+  		var servers = require('./servers.json');
+			
 		message.channel.sendEmbed({
 
 			color: 0x656a7d,
-			title: 
 			
 		});
 	}
-
 }
+
+module.exports = command;
