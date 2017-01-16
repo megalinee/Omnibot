@@ -60,89 +60,91 @@ bot.on('message', message => {
 
 	*/
 
+	if(message.type !== 'dm') {
 
-	if(servers[message.guild.id]) {	
-
-		if(message.content.startsWith(servers[message.guild.id].config.prefix)) {
+		if(servers[message.guild.id]) {	
 	
-			let input = message.content.toLowerCase();
-			let cmdText = input.split(' ')[0].substring(1);
+			if(message.content.startsWith(servers[message.guild.id].config.prefix)) {
+		
+				let input = message.content.toLowerCase();
+				let cmdText = input.split(' ')[0].substring(1);
+		
+				let foundCommand = false;
+				let command;
+		
+				for(cmd in commands) {
 	
-			let foundCommand = false;
-			let command;
+					try {
 	
-			for(cmd in commands) {
-
-				try {
-
-                	if(commands[cmd] && (cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1)) {
-                	    
-                	    foundCommand = true;
-                	    
-                	    command = cmd;
-                	    
-                	    break;
-                	
-                	} else {
-                	
-                	    foundCommand = false;
-                	
-                	}
-
-                } catch(error) {
-
-                	// COMMAND WASNT FOUND
-
-                }
-            }
+    	            	if(commands[cmd] && (cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1)) {
+    	            	    
+    	            	    foundCommand = true;
+    	            	    
+    	            	    command = cmd;
+    	            	    
+    	            	    break;
+    	            	
+    	            	} else {
+    	            	
+    	            	    foundCommand = false;
+    	            	
+    	            	}
 	
-			if(foundCommand) {
+    	            } catch(error) {
 	
+    	            	// COMMAND WASNT FOUND
 	
-				// COMMAND HAS BEEN TRIGGERED
+    	            }
+    	        }
+		
+				if(foundCommand) {
+		
+		
+					// COMMAND HAS BEEN TRIGGERED
+		
+					console.log(`| COMMAND ${cmdText} WAS TRIGGERED BY ${message.author.username}#${message.author.discriminator}`.yellow);
+		
+					try {
+		
+						commands[command].process(bot, message, config);
 	
-				console.log(`| COMMAND ${cmdText} WAS TRIGGERED BY ${message.author.username}#${message.author.discriminator}`.yellow);
-	
-				try {
-	
-					commands[command].process(bot, message, config);
-
-					servers = require('./servers.json');
-	
-				} catch(error) {
-	
-					console.log(`| COMMAND ${cmdText} FAILED : ${error}`.red)
-	
+						servers = require('./servers.json');
+		
+					} catch(error) {
+		
+						console.log(`| COMMAND ${cmdText} FAILED : ${error}`.red)
+		
+					}
+		
 				}
-	
+				
+		
 			}
-			
+	
+		} else {
+	
+			console.log(`| COULD NOT FIND SERVER CONFIG FOR GUILD: ${message.guild.id}`.red);
+	
+			servers[message.guild.id] = {
+	
+				config: {
+					prefix: '|',
+					greet: false,
+					greetMessage: 'Welcome %USERNAME% to %GUILDNAME%',
+					farewell: false,
+					farewellMessage: 'Bye bye %USERNAME%'
+				},
+				logs: []
+	
+			};
+	
+			fs.writeFile('./servers.json', JSON.stringify(servers, 'null', 4));
+	
+			console.log(`| CREATED CONFIG FOR ${message.guild.id}`.yellow);
+	
+	
 	
 		}
-
-	} else {
-
-		console.log(`| COULD NOT FIND SERVER CONFIG FOR GUILD: ${message.guild.id}`.red);
-
-		servers[message.guild.id] = {
-
-			config: {
-				prefix: '|',
-				greet: false,
-				greetMessage: 'Welcome %USERNAME% to %GUILDNAME%',
-				farewell: false,
-				farewellMessage: 'Bye bye %USERNAME%'
-			},
-			logs: []
-
-		};
-
-		fs.writeFile('./servers.json', JSON.stringify(servers, 'null', 4));
-
-		console.log(`| CREATED CONFIG FOR ${message.guild.id}`.yellow);
-
-
-
 	}
 
 })

@@ -27,5 +27,15 @@
             "farewellMessage": "Bye bye %USERNAME%"
         },
         "logs": []
+    },
+    "214223901390012416": {
+        "config": {
+            "prefix": "|",
+            "greet": false,
+            "greetMessage": "Welcome %USERNAME% to %GUILDNAME%",
+            "farewell": false,
+            "farewellMessage": "Bye bye %USERNAME%"
+        },
+        "logs": []
     }
 }

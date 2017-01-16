@@ -11,7 +11,9 @@ var commands = {
 	say: require('./command_say.js'),
 	prefix: require('./command_prefix.js'),
 	userinfo: require('./command_userinfo.js'),
-	guildinfo: require('./command_guildinfo.js')
+	guildinfo: require('./command_guildinfo.js'),
+	ban: require('./command_ban.js'),
+	kick: require('./command_kick.js')
 
 }
 
