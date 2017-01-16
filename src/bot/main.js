@@ -17,7 +17,7 @@ var config = JSON.parse(fs.readFileSync('./config.json')); // CONFIG FOR DEFAULT
 const commands = require('./commands/commands.js');
 const events = require('./events/events.js');
 
-var servers = JSON.parse(fs.readFileSync('./servers.json'));
+var servers = require('./servers.json');
 
 /*
 
@@ -72,20 +72,21 @@ bot.on('message', message => {
 			let command;
 	
 			for(cmd in commands) {
-	
-				if(cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1) {
-	
-					foundCommand = true;
-	
-					command = cmd;
-	
-				} else {
-	
-					foundCommand = false;
-	
-				}
-	
-			}
+
+                if(cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1) {
+                    
+                    foundCommand = true;
+                    
+                    command = cmd;
+                    
+                    break;
+                
+                } else {
+                
+                    foundCommand = false;
+                
+                }
+            }
 	
 			if(foundCommand) {
 	
@@ -98,7 +99,7 @@ bot.on('message', message => {
 	
 					commands[command].process(bot, message, config);
 
-					servers = JSON.parse(fs.readFileSync('./servers.json'));
+					servers = require('./servers.json');
 	
 				} catch(error) {
 	
