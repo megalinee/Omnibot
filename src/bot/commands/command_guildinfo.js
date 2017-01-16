@@ -4,6 +4,7 @@ const command = {
 	description: 'Get info about a user in a specfic guild.',
 	arguments: [],
 	requirement: 'none',
+	alias: ['ginfo'],
 	process: (bot , message , config) => {
     var serv;
 	  serv = message.guild()
@@ -63,3 +64,5 @@ const command = {
     msg.channel.sendEmbed(embed,'',{ disableEveryone: true });
 	}
 }
+
+module.exports = command;

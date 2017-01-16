@@ -73,18 +73,26 @@ bot.on('message', message => {
 	
 			for(cmd in commands) {
 
-                if(cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1) {
-                    
-                    foundCommand = true;
-                    
-                    command = cmd;
-                    
-                    break;
-                
-                } else {
-                
-                    foundCommand = false;
-                
+				try {
+
+                	if(commands[cmd] && (cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1)) {
+                	    
+                	    foundCommand = true;
+                	    
+                	    command = cmd;
+                	    
+                	    break;
+                	
+                	} else {
+                	
+                	    foundCommand = false;
+                	
+                	}
+
+                } catch(error) {
+
+                	// COMMAND WASNT FOUND
+
                 }
             }
 	
