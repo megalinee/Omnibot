@@ -17,6 +17,7 @@ var config = JSON.parse(fs.readFileSync('./config.json')); // CONFIG FOR DEFAULT
 const commands = require('./commands/commands.js');
 const events = require('./events/events.js');
 
+var globalBans = require('./global_bans.json');
 var servers = require('./servers.json');
 
 /*
@@ -52,7 +53,27 @@ bot.on('ready', () => {
 
 */
 
-bot.on('message', message => {
+bot.on('message', message => { try {
+
+	/*
+
+		BAN GLOBALLY BANNED USERS
+
+	*/
+
+	globalBans.bans.forEach(bannedUser => {
+
+		if(message.guild.members.has(bannedUser)) {
+
+			message.guild.members.get(bannedUser).ban(0).then(member => {
+
+				member.user.sendMessage(`You have been globally banned from ${bot.user.username}, therfore you have been banned from ${member.guild.name}`);
+
+			});
+
+		}
+
+	})
 
 	/*
 
@@ -145,6 +166,12 @@ bot.on('message', message => {
 	
 	
 		}
+	}
+
+	} catch(error) {
+
+		console.log(`| ERROR IN MESSAGE HANDLER ${error}`.red);
+
 	}
 
 })

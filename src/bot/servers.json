@@ -1,3 +1,4 @@
+
 {
     "269921272299913217": {
         "config": {
@@ -20,7 +21,7 @@
     },
     "207017483394088960": {
         "config": {
-            "prefix": "r",
+            "prefix": "|",
             "greet": false,
             "greetMessage": "Welcome %USERNAME% to %GUILDNAME%",
             "farewell": false,

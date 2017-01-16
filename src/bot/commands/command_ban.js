@@ -8,7 +8,7 @@ command = {
 	description: 'Bans a user',
 	arguments: ['member'],
 	permission: 'none',
-	alias: ['snipe','permkic'],
+	alias: ['snipe','permkick'],
 	process: function(bot,message) {
 
 		if(message.member.hasPermission('BAN_MEMBERS')) {

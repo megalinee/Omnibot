@@ -13,7 +13,8 @@ var commands = {
 	userinfo: require('./command_userinfo.js'),
 	guildinfo: require('./command_guildinfo.js'),
 	ban: require('./command_ban.js'),
-	kick: require('./command_kick.js')
+	kick: require('./command_kick.js'),
+	announce: require('./command_announce.js'),
 
 }
 
