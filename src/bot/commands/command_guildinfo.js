@@ -18,6 +18,11 @@ const command = {
 			  url: serv.icon
 	    },
 	    fields: [
+				{
+					name: 'Number of Roles:',
+					value: serv.roles.length,
+					inline: true
+				},
 			  {
 					name: 'ID:',
 					value: serv.id,

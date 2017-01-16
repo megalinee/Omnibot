@@ -6,7 +6,6 @@ const command = {
 	requirement: 'none',
 	process: (bot , message , config) => {
   	var author;
-
     if(message.mentions.users.first()){
 	  	author = message.mentions.users.first()
 	  }else{
