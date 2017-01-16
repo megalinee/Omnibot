@@ -63,7 +63,26 @@ bot.on('message', message => {
 		let input = message.content.toLowerCase();
 		let cmdText = input.split(' ')[0].substring(1);
 
-		if(commands[cmdText]) {
+		let foundCommand = false;
+		let command;
+
+		for(cmd in commands) {
+
+			if(cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1) {
+
+				foundCommand = true;
+
+				command = cmd;
+
+			} else {
+
+				foundCommand = false;
+
+			}
+
+		}
+
+		if(foundCommand) {
 
 
 			// COMMAND HAS BEEN TRIGGERED
@@ -72,7 +91,7 @@ bot.on('message', message => {
 
 			try {
 
-				commands[cmdText].process(bot, message, config);
+				commands[command].process(bot, message, config);
 
 			} catch(error) {
 
