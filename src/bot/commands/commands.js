@@ -8,9 +8,8 @@ var commands = {
 
 	ping: require('./command_ping.js'),
 	prune: require('./command_prune.js'),
-	//say: require('./command_say.js'),
-	//prefix: require('./command_prefix.js'),
-	//userinfo: require('./command_userinfo.js')
+	say: require('./command_say.js'),
+	prefix: require('./command_prefix.js'),
 
 }
 

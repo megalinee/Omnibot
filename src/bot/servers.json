@@ -1,23 +1,21 @@
 {
-	"269921272299913217": {
-
-		"config" : {
-			"prefix": "|",
-			"greet": false,
-			"greetingMessage": "Welcome %USER% to %GUILD%",
-			"farewell": false,
-			"farewellMessage": "Goodbye %USER%"
-		},
-		"logs": [
-			{
-				"event" : "ban",
-				"info": "Yoshi021 was banned."
-			},
-			{
-				"event" : "pardon",
-				"info": "Yoshi021 was pardoned."
-			}
-		]
-
-	}
+    "269921272299913217": {
+        "config": {
+            "prefix": "*",
+            "greet": false,
+            "greetingMessage": "Welcome %USER% to %GUILD%",
+            "farewell": false,
+            "farewellMessage": "Goodbye %USER%"
+        },
+        "logs": [
+            {
+                "event": "ban",
+                "info": "Yoshi021 was banned."
+            },
+            {
+                "event": "pardon",
+                "info": "Yoshi021 was pardoned."
+            }
+        ]
+    }
 }

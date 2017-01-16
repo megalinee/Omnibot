@@ -17,6 +17,8 @@ var config = JSON.parse(fs.readFileSync('./config.json')); // CONFIG FOR DEFAULT
 const commands = require('./commands/commands.js');
 const events = require('./events/events.js');
 
+var servers = JSON.parse(fs.readFileSync('./servers.json'));
+
 /*
 
 	MOD EVENTS HANDLER 
@@ -58,49 +60,61 @@ bot.on('message', message => {
 
 	*/
 
-	if(message.content.startsWith(config.defaultPrefix)) {
 
-		let input = message.content.toLowerCase();
-		let cmdText = input.split(' ')[0].substring(1);
+	if(servers[message.guild.id]) {	
 
-		let foundCommand = false;
-		let command;
-
-		for(cmd in commands) {
-
-			if(cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1) {
-
-				foundCommand = true;
-
-				command = cmd;
-
-			} else {
-
-				foundCommand = false;
-
+		if(message.content.startsWith(servers[message.guild.id].config.prefix)) {
+	
+			let input = message.content.toLowerCase();
+			let cmdText = input.split(' ')[0].substring(1);
+	
+			let foundCommand = false;
+			let command;
+	
+			for(cmd in commands) {
+	
+				if(cmdText === commands[cmd].name || commands[cmd].alias.indexOf(cmdText) !== -1) {
+	
+					foundCommand = true;
+	
+					command = cmd;
+	
+				} else {
+	
+					foundCommand = false;
+	
+				}
+	
 			}
+	
+			if(foundCommand) {
+	
+	
+				// COMMAND HAS BEEN TRIGGERED
+	
+				console.log(`| COMMAND ${cmdText} WAS TRIGGERED BY ${message.author.username}#${message.author.discriminator}`.yellow);
+	
+				try {
+	
+					commands[command].process(bot, message, config);
 
+					servers = JSON.parse(fs.readFileSync('./servers.json'));
+	
+				} catch(error) {
+	
+					console.log(`| COMMAND ${cmdText} FAILED : ${error}`.red)
+	
+				}
+	
+			}
+			
+	
 		}
 
-		if(foundCommand) {
+	} else {
 
+		console.log(`| COULD NOT FIND SERVER CONFIG FOR GUILD: ${message.guild.id}`.red);
 
-			// COMMAND HAS BEEN TRIGGERED
-
-			console.log(`| COMMAND ${cmdText} WAS TRIGGERED BY ${message.author.username}#${message.author.discriminator}`.yellow);
-
-			try {
-
-				commands[command].process(bot, message, config);
-
-			} catch(error) {
-
-				console.log(`| COMMAND ${cmdText} FAILED : ${error}`.red)
-
-			}
-
-		}
-		
 
 	}
 

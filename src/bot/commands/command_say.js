@@ -9,15 +9,16 @@ const command = {
 	name: 'say',
 	description: 'A command that will echo what you say',
 	arguments: ['text'],
+	alias: ['echo','copy','repeat'],
 	requirement: 'none',
 	process: (bot , message , config) => {
 		
-		message.channel.sendEmbed({
+		let suffix = message.content.split(' ').splice(1).join(' ');
 
-			color: 0x656a7d,
-			title: message.content
-			
-		});
+		message.channel.sendMessage(suffix);
+
 	}
 
 }
+
+module.exports = command;
