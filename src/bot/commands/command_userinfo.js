@@ -5,29 +5,51 @@ const command = {
 	arguments: [],
 	requirement: 'none',
 	process: (bot , message , config) => {
+  	var author;
 
-  var author;
-  
-  if(!message.mentions.users.first()) author = message.author
-  
-  if(message.mentions.users.first()) author = message.mentions.users.first()
-  
-  const embed = new Discord.RichEmbed()
-  .setTitle('Info about ' + author.username)
-  .setAuthor(author.username, author.avatarURL)
-  .setColor(0x00AE86)
-  .setFooter('Omni Bot | ' + new Date, bot.user.avatarURL)
-  .setThumbnail(author.avatarURL)
-  .setURL('http://quif.github.io/omnibot')
-  .addField('Date account made', author.createdAt)
-  .addField('Author ID', author.id, true)
+    if(message.mentions.users.first()){
+	  	author = message.mentions.users.first()
+	  }else{
+      author = message.author
+	  }
 
-  msg.channel.sendEmbed(
-  embed,
-  '',
-  { disableEveryone: true }
-  );
+  const embed = {
+    title: `Info about ${author.username}`,
+  	color: 0x00AE86,
+  	author: {
+  		name: author.username,
+  		icon_url: author.avatarURL
+    },
+  	thumbnail: {
+  		url: author.avatarURL
+  	},
+	  fields: [
+			{
+				name: 'Author ID:',
+				value: author.id,
+				inline: true
+			},
+			{
+				name: 'Account made:'
+				value:  author.createdAt,
+				inline: true
+			},
+			{
+				name: 'Discriminator:',
+				value: author.discriminator,
+				inline: true
+			},
+			{
+				name: 'Presence:',
+				value: author.presence,
+				inline: true
+			}
+	  ],
+	  footer: {
+	    text: 'Omni Bot | ' + new Date, bot.user.avatarURL
+	  }
+
+	  msg.channel.sendEmbed(embed, '', { disableEveryone: true });
 
 	}
-
 }
