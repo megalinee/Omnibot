@@ -1,7 +1,7 @@
 {
     "269921272299913217": {
         "config": {
-            "prefix": "*",
+            "prefix": "|",
             "greet": false,
             "greetingMessage": "Welcome %USER% to %GUILD%",
             "farewell": false,
@@ -17,5 +17,15 @@
                 "info": "Yoshi021 was pardoned."
             }
         ]
+    },
+    "207017483394088960": {
+        "config": {
+            "prefix": "r",
+            "greet": false,
+            "greetMessage": "Welcome %USERNAME% to %GUILDNAME%",
+            "farewell": false,
+            "farewellMessage": "Bye bye %USERNAME%"
+        },
+        "logs": []
     }
 }

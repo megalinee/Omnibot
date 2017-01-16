@@ -116,6 +116,24 @@ bot.on('message', message => {
 
 		console.log(`| COULD NOT FIND SERVER CONFIG FOR GUILD: ${message.guild.id}`.red);
 
+		servers[message.guild.id] = {
+
+			config: {
+				prefix: '|',
+				greet: false,
+				greetMessage: 'Welcome %USERNAME% to %GUILDNAME%',
+				farewell: false,
+				farewellMessage: 'Bye bye %USERNAME%'
+			},
+			logs: []
+
+		};
+
+		fs.writeFile('./servers.json', JSON.stringify(servers, 'null', 4));
+
+		console.log(`| CREATED CONFIG FOR ${message.guild.id}`.yellow);
+
+
 
 	}
 

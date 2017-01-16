@@ -20,7 +20,7 @@ const joinEmbed = {
 
 const event = (guild) => {
 
-	if(servers.indexOf(guild.id) === -1) {
+	if(!servers[guild.id]) {
 		
 		// THIS IS A NEW GUILD
 
@@ -47,14 +47,14 @@ const event = (guild) => {
 
 		}
 
-		message.channel.sendEmbed(joinEmbed);
+		guild.defaultChannel.sendEmbed(joinEmbed);
 
 
 	} else {
 
 		// THE BOT HAS BEEN RE-ADDED
 
-		message.channel.sendEmbed(joinEmbed);
+		guild.defaultChannel.sendEmbed(joinEmbed);
 
 	}
 
