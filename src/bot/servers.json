@@ -1,24 +1,4 @@
-
 {
-    "269921272299913217": {
-        "config": {
-            "prefix": "|",
-            "greet": false,
-            "greetingMessage": "Welcome %USER% to %GUILD%",
-            "farewell": false,
-            "farewellMessage": "Goodbye %USER%"
-        },
-        "logs": [
-            {
-                "event": "ban",
-                "info": "Yoshi021 was banned."
-            },
-            {
-                "event": "pardon",
-                "info": "Yoshi021 was pardoned."
-            }
-        ]
-    },
     "207017483394088960": {
         "config": {
             "prefix": "|",
@@ -27,16 +7,20 @@
             "farewell": false,
             "farewellMessage": "Bye bye %USERNAME%"
         },
-        "logs": []
+        "logs": [],
+        "bot-commanders": []
     },
-    "214223901390012416": {
+    "269921272299913217": {
         "config": {
-            "prefix": "|",
-            "greet": false,
+            "prefix": "/",
+            "greet": true,
             "greetMessage": "Welcome %USERNAME% to %GUILDNAME%",
             "farewell": false,
             "farewellMessage": "Bye bye %USERNAME%"
         },
-        "logs": []
+        "logs": [],
+        "bot-commanders": [
+            "212297373827727360"
+        ]
     }
 }
