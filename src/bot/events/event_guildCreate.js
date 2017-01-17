@@ -33,7 +33,8 @@ const event = (guild) => {
 				farewell: false,
 				farewellMessage: 'Bye bye %USERNAME%'
 			},
-			logs: []
+			logs: [],
+			'bot-commanders': [] 
 
 		};
 
