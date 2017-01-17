@@ -17,7 +17,6 @@ var config = JSON.parse(fs.readFileSync('./config.json')); // CONFIG FOR DEFAULT
 const commands = require('./commands/commands.js');
 const events = require('./events/events.js');
 
-var globalBans = require('./global_bans.json');
 var servers = require('./servers.json');
 
 /*
@@ -54,26 +53,6 @@ bot.on('ready', () => {
 */
 
 bot.on('message', message => { try {
-
-	/*
-
-		BAN GLOBALLY BANNED USERS
-
-	*/
-
-	globalBans.bans.forEach(bannedUser => {
-
-		if(message.guild.members.has(bannedUser)) {
-
-			message.guild.members.get(bannedUser).ban(0).then(member => {
-
-				member.user.sendMessage(`You have been globally banned from ${bot.user.username}, therfore you have been banned from ${member.guild.name}`);
-
-			});
-
-		}
-
-	})
 
 	/*
 
@@ -114,7 +93,8 @@ bot.on('message', message => { try {
     	            } catch(error) {
 	
     	            	// COMMAND WASNT FOUND
-	
+
+
     	            }
     	        }
 		
@@ -123,17 +103,39 @@ bot.on('message', message => { try {
 		
 					// COMMAND HAS BEEN TRIGGERED
 		
-					console.log(`| COMMAND ${cmdText} WAS TRIGGERED BY ${message.author.username}#${message.author.discriminator}`.yellow);
+					//console.log(`| COMMAND ${cmdText} WAS TRIGGERED BY ${message.author.username}#${message.author.discriminator}`.yellow);
 		
 					try {
+
+						if(commands[command].requirement === 'none') {
 		
-						commands[command].process(bot, message, config);
+							commands[command].process(bot, message, config);
+
+						} else if(commands[command].requirement === 'bot-commander') {
+
+							if(servers[message.guild.id]['bot-commanders'].indexOf(message.author.id) !== -1 || message.author.id === message.guild.owner.id) {
+
+								// HAS COMMANDER ROLE
+
+								commands[command].process(bot, message, config);
+
+							} else {
+
+								message.channel.sendMessage(`:lock: You must have server bot-commander. An administrator with the \`ADMINISTRATOR\` permission can give this to you by doing \`${servers[message.guild.id].config.prefix}commander add ${message.author}\`.`);
+
+							}
+
+						} else {
+
+							message.channel.sendMessage('hi');
+
+						}
 	
 						servers = require('./servers.json');
 		
 					} catch(error) {
 		
-						console.log(`| COMMAND ${cmdText} FAILED : ${error}`.red)
+						console.log(`| COMMAND ${cmdText.toUpperCase()} FAILED : ${error}`.red)
 		
 					}
 		
@@ -155,7 +157,9 @@ bot.on('message', message => { try {
 					farewell: false,
 					farewellMessage: 'Bye bye %USERNAME%'
 				},
-				logs: []
+				logs: [],
+				'bot-commanders': []
+
 	
 			};
 	
