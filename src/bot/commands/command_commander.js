@@ -17,7 +17,7 @@ const command = {
 	description: 'Add or remove commander from a user',
 	arguments: ['add/remove','user mention'],
 	alias: ['cmdr'],
-	requirement: 'bot-commander',
+	requirement: 'none',
 	process: (bot, message, config) => {
 
 
