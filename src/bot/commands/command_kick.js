@@ -7,7 +7,7 @@ command = {
 	name: 'kick',
 	description: 'kicks a user',
 	arguments: ['member'],
-	permission: 'none',
+	requirement: 'none',
 	alias: ['stun','tempban'],
 	process: function(bot,message) {
 

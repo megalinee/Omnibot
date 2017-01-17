@@ -12,20 +12,33 @@ const command = {
 	alias: ['ann'],
 	requirement: 'none',
 	process: (bot , message , config) => {
+
+		setTimeout(function() {message.delete()}, 6000);
 	
 		let suffix = message.content.split(' ').splice(1).join(' ');
 
 		if(message.guild.channels.exists('name','announcements')) {
 
-			const announcementsChannel = message.guild.channels.find('name','announcements');
+			announcementsChannel = message.guild.channels.find('name','announcements');
 
 		} else {
 
-			const announcementsChannel = message.guild.defaultChannel;
+			announcementsChannel = message.guild.defaultChannel;
 
 		}
 
-		announcementsChannel.sendMessage(suffix);
+		announcementsChannel.sendMessage(`@everyone, ${suffix}`)
+			.then(msg => {
+
+				message.reply(`I have announced your message in ${announcementsChannel}`);
+
+				setTimeout(() => {msg.delete()}, 6000);
+
+			}).catch(error => {
+
+				message.reply(`I did not have permission to talk in ${announcementsChannel}`);
+
+			})
 
 	}
 

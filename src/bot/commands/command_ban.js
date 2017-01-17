@@ -7,7 +7,7 @@ command = {
 	name: 'ban',
 	description: 'Bans a user',
 	arguments: ['member'],
-	permission: 'none',
+	requirement: 'none',
 	alias: ['snipe','permkick'],
 	process: function(bot,message) {
 

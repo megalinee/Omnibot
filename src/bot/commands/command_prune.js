@@ -10,7 +10,7 @@ command = {
 	description: 'Deletes the given amount of messages',
 	arguments: ['amount'],
 	alias: ['purge','clean','clear'],
-	permission: 'none',
+	requirement: 'none',
 	process: (bot,message) => {
 
 		message.delete();
