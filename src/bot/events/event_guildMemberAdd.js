@@ -18,9 +18,11 @@ const event = function(member) {
 
 		const server = servers[member.guild.id];
 
-		if(server.config.greet) {
+		if(server.config.greet === true) {
 
-			member.guild.defaultChannel.sendMessage(server.config.greeting);
+			const greetMessage = server[member.guild.id].config.greetMessage.replace("%USERNAME%", member.displayName).replace('%GUILDNAME%', member.guild.name);
+
+			member.guild.channels.first().sendMessage(server.config.greetMessage);
 
 		}
 

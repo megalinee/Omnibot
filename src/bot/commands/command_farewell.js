@@ -1,9 +1,9 @@
 /*
 
-		GREETING COMMAND
-	(for setting greeting and
+		farewell COMMAND
+	(for setting farewell and
 	enabling/disabling the
-		   greeting)
+		   farewell)
 
 */
 
@@ -17,10 +17,10 @@ var servers = require(pathToServers);
 
 const command = {
 
-	name: 'greeting',
-	description: 'A command to enable/disable the greet command or set greeting',
+	name: 'farewell',
+	description: 'A command to enable/disable the farewell command or set farewell message',
 	arguments: ['set/disable/enable'],
-	alias: ['greet','joinmessage','joinmsg'],
+	alias: ['leavemessage','leavemsg'],
 	requirement: 'bot-commander',
 	process: (bot, message, config) => {
 
@@ -32,11 +32,11 @@ const command = {
 
 				try {
 
-					servers[message.guild.id].config.greet = true;
+					servers[message.guild.id].config.farewell = true;
 
 					fs.writeFile(pathToServers, JSON.stringify(servers, 'null', 4));
 
-					message.channel.sendMessage(`Greetings have been enabled for ${message.guild.name}.`);
+					message.channel.sendMessage(`farewells have been enabled for ${message.guild.name}.`);
 
 				} catch(error) {
 
@@ -51,11 +51,11 @@ const command = {
 
 				try {
 
-					servers[message.guild.id].config.greet = false;
+					servers[message.guild.id].config.farewell = false;
 
 					fs.writeFile(pathToServers, JSON.stringify(servers, 'null', 4));
 
-					message.channel.sendMessage(`Greetings have been disabled for ${message.guild.name}.`);
+					message.channel.sendMessage(`Farewells have been disabled for ${message.guild.name}.`);
 
 				} catch(error) {
 
@@ -68,13 +68,13 @@ const command = {
 			}
 			case 'set': {
 
-				const newGreeting = message.content.split(' ').splice(1).splice(1).join(' ');
+				const newfarewell = message.content.split(' ').splice(1).splice(1).join(' ');
 
-				servers[message.guild.id].config.greetMessage = newGreeting;
+				servers[message.guild.id].config.farewellMessage = newfarewell;
 
 				fs.writeFile(pathToServers, JSON.stringify(servers, 'null', 4));
 
-				message.channel.sendMessage(`The new greeting has been set.`);
+				message.channel.sendMessage(`The new farewell has been set.`);
 
 				break;
 

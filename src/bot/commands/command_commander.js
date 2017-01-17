@@ -21,9 +21,9 @@ const command = {
 	process: (bot, message, config) => {
 
 
-		if(message.member.hasPermission('ADMINISTRATOR') || message.author.id === message.guild.owner.user.id) {
+		if(true) {
 
-			if(message.mentions.users.first()) {
+			if(true) {
 
 				suffix = message.content.split(' ')[1];
 
@@ -31,24 +31,57 @@ const command = {
 
 					case 'add' : {
 
-						servers[message.guild.id]['bot-commanders'].push(message.mentions.users.first().id);
+						if(message.member.hasPermission('ADMINISTRATOR') || message.author.id === message.guild.owner.user.id) {
 
-						fs.writeFile(pathToServers, JSON.stringify(servers, 'null', 4));
+							if(message.mentions.users.first()) {
 
-						message.channel.sendMessage(`${message.mentions.users.first()} is now a \`bot-commander\``);
+								servers[message.guild.id]['bot-commanders'].push(message.mentions.users.first().id);
 
-						break;
+								fs.writeFile(pathToServers, JSON.stringify(servers, 'null', 4));
+
+								message.channel.sendMessage(`${message.mentions.users.first()} is now a \`bot-commander\``);
+
+								break;
+
+							} else {
+
+
+
+							}
+
+
+						} else {
+							message.channel.sendMessage(`:lock: You must have ADMINISTRATOR permission in your role to add a bot commander.`);
+						}
 
 					}
 					case 'remove': {
 
-						servers[message.guild.id]['bot-commanders'].splice(message.mentions.users.first().id, 1);
+						if(message.member.hasPermission('ADMINISTRATOR') || message.author.id === message.guild.owner.user.id) {
 
-						fs.writeFile(pathToServers, JSON.stringify(servers, 'null', 4));
+							servers[message.guild.id]['bot-commanders'].splice(message.mentions.users.first().id, 1);
 
-						message.channel.sendMessage(`${message.mentions.users.first()} is no longer a \`bot-commander\``);
+							fs.writeFile(pathToServers, JSON.stringify(servers, 'null', 4));
 
-						break;
+							message.channel.sendMessage(`${message.mentions.users.first()} is no longer a \`bot-commander\``);	
+
+							break;
+						} else {
+							message.channel.sendMessage(`:lock: You must have ADMINISTRATOR permission in your role to add a bot commander.`);
+						}
+
+					}
+					case 'list': {
+
+						if(servers[message.guild.id]['bot-commanders'].indexOf(message.author.id) !== -1) {
+
+							message.channel.sendMessage(`List of \`bot-commanders\` ${servers[message.guild.id]['bot-commanders'].join(' , ')}.`);
+
+						} else {
+
+							message.channel.sendMessage(`:lock: You must be a \`bot-commander\` to view the list of \`bot-commanders\``);
+
+						}
 
 					}
 					default: {

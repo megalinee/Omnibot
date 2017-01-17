@@ -8,13 +8,18 @@
             "farewellMessage": "Bye bye %USERNAME%"
         },
         "logs": [],
-        "bot-commanders": []
+        "bot-commanders": [
+            "199401380891328513",
+            "239217477941198859",
+            "199736801383022592",
+            "207389912222138368"
+        ]
     },
     "269921272299913217": {
         "config": {
-            "prefix": "/",
+            "prefix": "*",
             "greet": true,
-            "greetMessage": "Welcome %USERNAME% to %GUILDNAME%",
+            "greetMessage": "whats up guys its scarce here",
             "farewell": false,
             "farewellMessage": "Bye bye %USERNAME%"
         },
