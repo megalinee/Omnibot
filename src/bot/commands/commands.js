@@ -15,6 +15,8 @@ var commands = {
 	ban: require('./command_ban.js'),
 	kick: require('./command_kick.js'),
 	announce: require('./command_announce.js'),
+	commander: require('./command_commander.js'),
+	greeting: require('./command_greeting.js')
 
 }
 
