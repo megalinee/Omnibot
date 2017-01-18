@@ -1,31 +1,28 @@
 {
     "207017483394088960": {
         "config": {
+            "prefix": "/",
+            "greet": false,
+            "greetMessage": "Welcome %USERNAME% to %GUILDNAME%",
+            "farewell": false,
+            "farewellMessage": "Bye bye %USERNAME%",
+            "logChannelID": "not set"
+        },
+        "logs": [],
+        "bot-commanders": [
+            "199736801383022592"
+        ]
+    },
+    "199403579444822016": {
+        "config": {
             "prefix": "|",
             "greet": false,
             "greetMessage": "Welcome %USERNAME% to %GUILDNAME%",
             "farewell": false,
-            "farewellMessage": "Bye bye %USERNAME%"
+            "farewellMessage": "Bye bye %USERNAME%",
+            "logChannelID": "not set"
         },
         "logs": [],
-        "bot-commanders": [
-            "199401380891328513",
-            "239217477941198859",
-            "199736801383022592",
-            "207389912222138368"
-        ]
-    },
-    "269921272299913217": {
-        "config": {
-            "prefix": "*",
-            "greet": true,
-            "greetMessage": "whats up guys its scarce here",
-            "farewell": false,
-            "farewellMessage": "Bye bye %USERNAME%"
-        },
-        "logs": [],
-        "bot-commanders": [
-            "212297373827727360"
-        ]
+        "bot-commanders": []
     }
 }

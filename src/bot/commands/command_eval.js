@@ -11,7 +11,7 @@ const command = {
     name: "eval",
     description: "Eval a string",
     arguments: ["text"],
-    permission: "requirement",
+    requirement: "none",
     alias: ["e"],
     process: (bot , message , config) => {
 

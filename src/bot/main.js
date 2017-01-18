@@ -27,6 +27,7 @@ var servers = require('./servers.json');
 
 bot.on('guildMemberAdd', events.guildMemberAdd);
 bot.on('guildCreate', events.guildCreate);
+bot.on('guildBanAdd', events.guildBanAdd);
 
 /*
 
@@ -155,7 +156,8 @@ bot.on('message', message => { try {
 					greet: false,
 					greetMessage: 'Welcome %USERNAME% to %GUILDNAME%',
 					farewell: false,
-					farewellMessage: 'Bye bye %USERNAME%'
+					farewellMessage: 'Bye bye %USERNAME%',
+					logChannelID: 'not set'
 				},
 				logs: [],
 				'bot-commanders': []
