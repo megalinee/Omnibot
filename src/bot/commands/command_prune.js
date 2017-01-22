@@ -24,7 +24,7 @@ command = {
 				messagesToPrune = message.channel.fetchMessages({limit: parseInt(suffix)}).then(messages => {
 
 					message.channel.bulkDelete(messages).then(messages => {
-						
+
 						message.channel.sendMessage(`Successfully deleted ${suffix} messages`).then(message => {
 
 							setTimeout(function() {message.delete()}, 1000);
@@ -36,7 +36,7 @@ command = {
 						message.channel.sendMessage(`An error has occured while trying to prune, maybe I don't have permission to delete messages?`)
 							.then(message => {
 
-								setTimeout(function() {message.delete()}, 1000);
+								message.delete(1000);
 
 							})
 

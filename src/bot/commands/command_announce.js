@@ -13,8 +13,8 @@ const command = {
 	requirement: 'none',
 	process: (bot , message , config) => {
 
-		setTimeout(function() {message.delete()}, 6000);
-	
+		message.delete(6000);
+
 		let suffix = message.content.split(' ').splice(1).join(' ');
 
 		if(message.guild.channels.exists('name','announcements')) {
@@ -32,7 +32,7 @@ const command = {
 
 				message.reply(`I have announced your message in ${announcementsChannel}`);
 
-				setTimeout(() => {msg.delete()}, 6000);
+				msg.delete(6000);
 
 			}).catch(error => {
 
