@@ -27,7 +27,7 @@ command = {
 
 						message.channel.sendMessage(`Successfully deleted ${suffix} messages`).then(message => {
 
-							setTimeout(function() {message.delete()}, 1000);
+							message.delete(1000);
 
 						})
 
